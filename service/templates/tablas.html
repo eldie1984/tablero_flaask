@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+    {% block css %}
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style-responsive.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/table-responsive.css') }}" rel="stylesheet">
+    {% endblock %} 
+      {% block main %}
+          <section class="wrapper">
+          	<h3><i class="fa fa-angle-right"></i> Pendientes</h3>
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                      <h4><i class="fa fa-angle-right"></i> Pendientes</h4>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                  <th>Nro Remitente</th>
+                                  <th>Denominacion</th>
+                                  <th class="numeric">Fecha</th>
+                                  <th class="numeric">Dias Transcurridos</th>
+                                  <th class="numeric">Monto</th>
+                                  <th class="numeric">Estado Periodo</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                {% for pendiente in pendientes %}
+                                <tr>
+                                  <td>{{ pendiente.nro_remitente }}</td>
+                                  <td>{{ pendiente.denominacion }}</td>
+                                  <td>{% if pendiente.fecha %}{{ pendiente.fecha}}{% endif %}</td>
+                                  <td>{{ pendiente.diasTranscurridos }}</td>
+                                  <td>{{ pendiente.monto }}</td>
+                                  <td>{{ pendiente.estado}}</td>
+                                <tr>
+                                  {% endfor %}
+                             </tbody>
+                          </table>
+                          </section>
+                  </div><!-- /content-panel -->
+               </div><!-- /col-lg-4 -->			
+		  	</div><!-- /row -->
+        <div class="row mt">
+            <div class="col-lg-12">
+                      <div class="content-panel">
+                      <h4><i class="fa fa-angle-right"></i> Entre 120 y 150</h4>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                  <th>Nro Remitente</th>
+                                  <th>Denominacion</th>
+                                  <th class="numeric">Fecha</th>
+                                  <th class="numeric">Dias Transcurridos</th>
+                                  <th class="numeric">Monto</th>
+                                  <th class="numeric">Estado Periodo</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                {% for pend_120 in pendientes_120 %}
+                                <tr>
+                                  <td>{{ pend_120.nro_remitente }}</td>
+                                  <td>{{ pend_120.denominacion }}</td>
+                                  <td>{% if pend_120.fecha %}{{ pend_120.fecha}}{% endif %}</td>
+                                  <td>{{ pend_120.diasTranscurridos }}</td>
+                                  <td>{{ pend_120.monto }}</td>
+                                  <td>{{ pend_120.estado}}</td>
+                                <tr>
+                                  {% endfor %}
+                             </tbody>
+                          </table>
+                          </section>
+                  </div><!-- /content-panel -->
+               </div><!-- /col-lg-4 -->     
+        </div><!-- /row -->
+        <div class="row mt">
+            <div class="col-lg-12">
+                      <div class="content-panel">
+                      <h4><i class="fa fa-angle-right"></i> Favorables/Desfavorables</h4>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                  <th>Nro Remitente</th>
+                                  <th>Denominacion</th>
+                                  <th class="numeric">Fecha</th>
+                                  <th class="numeric">Dias Transcurridos</th>
+                                  <th class="numeric">Monto</th>
+                                  <th class="numeric">Estado Periodo</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                {% for favo in favorables %}
+                                <tr>
+                                  <td>{{ favo.nro_remitente }}</td>
+                                  <td>{{ favo.denominacion }}</td>
+                                  <td>{% if favo.fecha %}{{ favo.fecha}}{% endif %}</td>
+                                  <td>{{ favo.diasTranscurridos }}</td>
+                                  <td>{{ favo.monto }}</td>
+                                  <td>{{ favo.estado}}</td>
+                                <tr>
+                                  {% endfor %}
+                             </tbody>
+                          </table>
+                          </section>
+                  </div><!-- /content-panel -->
+               </div><!-- /col-lg-4 -->     
+        </div><!-- /row -->
+		</section><! --/wrapper -->
+    {% endblock %}
+      

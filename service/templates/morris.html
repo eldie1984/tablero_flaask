@@ -1,0 +1,150 @@
+{% extends "base.html" %}  
+        {% block css %}
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style-responsive.css') }}" rel="stylesheet">
+{% endblock %} 
+   {% block main %}
+          <section class="wrapper site-min-height">
+          <h3><i class="fa fa-angle-right"></i> Morris Charts</h3>
+              <!-- page start-->
+              <div id="morris">
+                  <div class="row mt">
+                      <div class="col-lg-6">
+                          <div class="content-panel">
+                              <h4><i class="fa fa-angle-right"></i> Estado alertas</h4>
+                              <div class="panel-body">
+                                  <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                <th>Tipo Alerta</th>
+                                <th>Estado Alerta</th>
+                                  <th>Cantidad</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                {% for estado in estados %}
+                                <tr>
+                                  <td>{{ estado.tipo_alerta }}</a></td>
+                                  <td>{{ estado.estado }}</a></td>
+                                  <td>{{ estado[2] }}</td>
+                                  
+                                <tr>
+                                  {% endfor %}
+                             </tbody>
+                          </table>
+                          </section>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="content-panel">
+                              <h4><i class="fa fa-angle-right"></i> Chart Example 2</h4>
+                              <div class="panel-body">
+                                  <div id="torta" class="graph"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt">
+                      <div class="col-lg-6">
+                          <div class="content-panel">
+                              <h4><i class="fa fa-angle-right"></i> Tipo alerta</h4>
+                              <div class="panel-body">
+                                  <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                <th>Tipo Alerta</th>
+                                  <th>Total</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                {% for alerta in alertas %}
+                                <tr>
+                                  <td>{{ alerta.tipo_alerta }}</a></td>
+                                  <td>{{ alerta[1] }}</td>
+                                  
+                                <tr>
+                                  {% endfor %}
+                             </tbody>
+                          </table>
+                          </section>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="content-panel">
+                              <h4><i class="fa fa-angle-right"></i> </h4>
+                              <div class="panel-body">
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- page end-->
+          </section>
+           {% endblock %}
+          }
+          }
+   {% block js %}
+    <!--<script src="{{ url_for('static', filename='js/Highcharts/js/highcharts.js') }}"></script>-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{ url_for('static', filename='js/Highcharts/js/modules/exporting.js') }}"></script>
+  <script>
+     Highcharts.chart('torta', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares January, 2015 to May, 2015'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Microsoft Internet Explorer',
+            y: 56.33
+        }, {
+            name: 'Chrome',
+            y: 24.03,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Firefox',
+            y: 10.38
+        }, {
+            name: 'Safari',
+            y: 4.77
+        }, {
+            name: 'Opera',
+            y: 0.91
+        }, {
+            name: 'Proprietary or Undetectable',
+            y: 0.2
+        }]
+    }]
+});
+  </script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+    {% block css %}
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style-responsive.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/table-responsive.css') }}" rel="stylesheet">
+    {% endblock %} 
+      {% block main %}
+          <section class="wrapper">
+          	<h3><i class="fa fa-angle-right"></i> Responsive Table Examples</h3>
+		  		<div class="row mt">
+			  		<div class="col-lg-12">
+                      <div class="content-panel">
+                      <h4><i class="fa fa-angle-right"></i> Responsive Table</h4>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                <th>id</th>
+                                  <th>Nro Remitente</th>
+                                  <th>Denominacion</th>
+                                  <th class="numeric">Fecha</th>
+                                  <th class="numeric">Dias Transcurridos</th>
+                                  <th class="numeric">Tipo Alerta/th>
+                                  <th class="numeric">Estado Periodo</th>
+                                  <th class="numeric">Tipo Comprobante</th>
+                                  <th class="numeric">Monto</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                {% for informe in informes %}
+                                <tr>
+                                  <td>{{ informe.id }}</a></td>
+                                  <td>{{ informe.nroRemitente }}</td>
+                                  <td>{{ informe.denominacion }}</td>
+                                  <td>{% if informe.fecha %}{{ informe.fecha}}{% endif %}</td>
+                                  <td>{{ informe.diasTranscurridos }}</td>
+                                  <td>{{ informe.tipoAlerta }}</td>
+                                  <td>{{ informe.estado}}</td>
+                                  <td>{{ informe.tipoComprobante }}</td>
+                                  <td>{{ informe.monto }}</td>
+                                <tr>
+                                  {% endfor %}
+                             </tbody>
+                          </table>
+                          </section>
+                  </div><!-- /content-panel -->
+               </div><!-- /col-lg-4 -->			
+		  	</div><!-- /row -->
+		  	
+		  
+
+		</section><! --/wrapper -->
+    {% endblock %}
+      
